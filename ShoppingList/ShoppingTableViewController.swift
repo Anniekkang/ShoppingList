@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ShoppingTableViewController: UITableViewController {
 
     
     var shoppingList : [String] = ["약과사기","투게더사기"]
+    let localrealm = try! Realm()
+    var tasks : Results<shoppingApp>!
     
    
     @IBOutlet weak var shoppingTextField: UITextField!
@@ -21,29 +24,48 @@ class ShoppingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureUI()
         
+        print("realm is located at", localrealm.configuration.fileURL!)
+        tasks = localrealm.objects(shoppingApp.self).sorted(byKeyPath: "list", ascending : true)
+        configureUI()
+      
     }
 
+  
+  
+    @IBAction func chooseButtonTapped(_ sender: UIButton) {
+       
+        
+        
+        let task = shoppingApp(list: shoppingTextField.text!)
+        try! localrealm.write{
+            localrealm.add(task)
+            print("realm succeed")
+            
+            tableView.reloadData()
+            shoppingTextField.text = ""
+        }
+ 
+    }
+    func configureTextField(item : UITextField){
+        
+        item.placeholder = "무엇을 구매하실건가요?"
+        item.backgroundColor = .systemGray5
+        
+    }
+    
     func configureUI(){
-        shoppingTextField.placeholder = "무엇을 구매하실건가요?"
-        shoppingTextField.backgroundColor = .systemGray5
+       
+        
+        
         chooseButton.setTitle("추가", for: .normal)
         chooseButton.backgroundColor = .systemGray4
         chooseButton.layer.cornerRadius = 10
         chooseButton.setTitleColor(.black, for: .normal)
         
+        configureTextField(item: shoppingTextField)
         
     }
-  
-    @IBAction func chooseButtonTapped(_ sender: UIButton) {
-        shoppingList.append(shoppingTextField.text!)
-        print(shoppingList)
-        tableView.reloadData()
-
-        
-    }
-    
     
     
     

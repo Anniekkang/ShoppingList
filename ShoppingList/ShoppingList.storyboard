@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Table View Controller-->
+        <!--쇼핑-->
         <scene sceneID="sxP-gc-ASd">
             <objects>
                 <tableViewController storyboardIdentifier="ShoppingTableViewController" id="pzU-Km-Kwd" customClass="ShoppingTableViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,10 +104,10 @@
                             <outlet property="delegate" destination="pzU-Km-Kwd" id="bZh-7m-cOo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XGq-fK-HoQ"/>
+                    <navigationItem key="navigationItem" title="쇼핑" id="XGq-fK-HoQ"/>
                     <connections>
                         <outlet property="chooseButton" destination="tA8-g9-dMA" id="JcR-hz-D9R"/>
-                        <outlet property="shoppingTextField" destination="5xE-fj-aLi" id="oMc-MO-a8Q"/>
+                        <outlet property="shoppingTextField" destination="5xE-fj-aLi" id="oOk-Q7-ThE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fO-8T-Dvf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol ReusableViewProtocol: AnyObject {
     static var reuseIdentifier: String { get }
